@@ -1,0 +1,42 @@
+# Predefined error codes for this API
+400BadRequest:
+  description: Bad Request
+  content:
+    application/problem+json:
+      schema:
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+404NotFound:
+  description: Not Found
+  content:
+    application/problem+json:
+      schema:
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+429TooManyRequests:
+  description: Too many requests
+  headers:
+    X-Rate-Limit-Limit:
+      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/X-Rate-Limit-Limit'
+    X-Rate-Limit-Remaining:
+      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/X-Rate-Limit-Remaining'
+    X-Rate-Limit-Reset:
+      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/X-Rate-Limit-Reset'
+  content:
+    application/problem+json:
+      schema:
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+503ServiceUnavailable:
+  description: Service Unavailable
+  headers:
+    Retry-After:
+      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/Retry-After'
+  content:
+    application/problem+json:
+      schema:
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml'
+default:
+  description: Unexpected error
+  content:
+    application/problem+json:
+      schema:
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+
