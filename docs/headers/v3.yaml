@@ -1,15 +1,15 @@
 # Headers conform to http://zalando.github.io/restful-api-guidelines/index.html#132
-X-Rate-Limit-Limit:
+X-RateLimit-Limit:
   description: The number of allowed requests in the current period
   schema:
     type: integer
     format: int32
-X-Rate-Limit-Remaining:
+X-RateLimit-Remaining:
   description: The number of remaining requests in the current period
   schema:
     type: integer
     format: int32
-X-Rate-Limit-Reset:
+X-RateLimit-Reset:
   description: The number of seconds left in the current period
   schema:
     type: integer
