@@ -20,6 +20,8 @@
       $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/X-RateLimit-Remaining'
     X-RateLimit-Reset:
       $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/X-RateLimit-Reset'
+    Retry-After:
+      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/Retry-After'  
   content:
     application/problem+json:
       schema:
