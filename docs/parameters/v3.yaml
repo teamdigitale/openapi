@@ -1,5 +1,4 @@
-# Generic parameters for pagination defined in
-# http://zalando.github.io/restful-api-guidelines/index.html#137
+# Parameters commonly used for pagination
 cursor:
   name: cursor
   in: query

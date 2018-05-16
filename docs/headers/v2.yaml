@@ -1,4 +1,4 @@
-# Headers conform to http://zalando.github.io/restful-api-guidelines/index.html#132
+# Throttling headers.
 X-RateLimit-Limit:
   description: The number of allowed requests in the current period
   type: integer
