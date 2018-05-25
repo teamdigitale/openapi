@@ -4,13 +4,13 @@
   content:
     application/problem+json:
       schema:
-        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#/Problem'
 404NotFound:
   description: Not Found
   content:
     application/problem+json:
       schema:
-        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#/Problem'
 429TooManyRequests:
   description: Too many requests
   headers:
@@ -21,11 +21,11 @@
     X-RateLimit-Reset:
       $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/X-RateLimit-Reset'
     Retry-After:
-      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/Retry-After'  
+      $ref: 'https://teamdigitale.github.io/openapi/headers/v3.yaml#/Retry-After'
   content:
     application/problem+json:
       schema:
-        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#/Problem'
 503ServiceUnavailable:
   description: Service Unavailable
   headers:
@@ -34,11 +34,11 @@
   content:
     application/problem+json:
       schema:
-        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml'
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#/Problem'
 default:
   description: Unexpected error
   content:
     application/problem+json:
       schema:
-        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#Problem'
+        $ref: 'https://teamdigitale.github.io/openapi/schemas/problem.yaml#/Problem'
 

@@ -40,6 +40,9 @@ sort:
   schema:
     type: string
     example: +name
+#
+# Header parameters for Optimistic Locking.
+#
 Etag:
   name: Etag
   description: |
