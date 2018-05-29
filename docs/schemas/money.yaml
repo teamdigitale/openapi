@@ -1,0 +1,16 @@
+Money:
+  type: object
+  properties:
+    amount:
+      type: number
+      description: Amount expressed as a decimal number of major currency units
+      format: decimal
+      example: 99.95
+    currency:
+      type: string
+      description: 3 letter currency code as defined by ISO-4217
+      format: iso-4217
+      example: EUR
+  required:
+    - amount
+    - currency
