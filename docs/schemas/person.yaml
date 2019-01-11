@@ -7,4 +7,4 @@ Person:
     family_name:
       type: string
   externalDocs:
-    uri: https://w3id.org/italia/onto/CPV
+    url: https://w3id.org/italia/onto/CPV
