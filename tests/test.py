@@ -46,7 +46,13 @@ def test_check_build():
     run([str(Path("build.py").resolve())])
     definitions = yaml_load_file("docs/definitions.yaml")
     assert "info" in definitions
-    for section in ("headers", "schemas", "parameters", "headers", "responses"):
+    for section in (
+        "headers",
+        "schemas",
+        "parameters",
+        "headers",
+        "responses",
+    ):
         assert section in definitions, f"Missing {section} in definitions.yaml"
 
 
