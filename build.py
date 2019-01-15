@@ -61,7 +61,11 @@ def assemble():
     p = Path("docs/definitions.yaml")
     with p.open("w") as fh:
         fh.write(OpenapiResolver.yaml_dump_pretty(info))
-        fh.write(OpenapiResolver.yaml_dump_pretty(resolved))
+        fh.write(
+            OpenapiResolver.yaml_dump_pretty(resolved).replace(
+                "#/components/", "#/"
+            )
+        )
 
 
 if __name__ == "__main__":
