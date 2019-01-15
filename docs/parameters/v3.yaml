@@ -40,6 +40,13 @@ sort:
   schema:
     type: string
     example: +name
+citizen:
+  name: citizen
+  in: query
+  description: testme
+  schema:
+    $ref: ../schemas/person.yaml#/Person
+
 #
 # Header parameters for Optimistic Locking.
 #
