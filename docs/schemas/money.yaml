@@ -1,16 +1,33 @@
 Money:
+  description: |
+    An amount of money in a given currency.
   type: object
-  properties:
-    amount:
-      type: number
-      description: Amount expressed as a decimal number of major currency units
-      format: decimal
-      example: 99.95
-    currency:
-      type: string
-      description: 3 letter currency code as defined by ISO-4217
-      format: iso-4217
-      example: EUR
   required:
-    - amount
     - currency
+    - amount
+  properties:
+    currency:
+      $ref: '#/CurrencyCode'
+    amount:
+      description: >
+        ISO20022: Amount of money to be moved between the debtor and
+        creditor, before deduction of charges, expressed in the currency as
+        ordered by the initiating party.
+      type: string
+      pattern: '^\-{0,1}[0-9]{1,13}(\.[0-9]{0,5}){0,1}$'
+  example:
+    currency: EUR
+    amount: '12.25'
+
+ 
+ CurrencyCode:
+  description: >
+    Specifies the currency of the amount or of the account. 
+
+    A code allocated to a currency by a Maintenance Agency under an
+    international identification scheme, as described in the latest edition
+    of the international standard ISO 4217 "Codes for the representation of
+    currencies and funds". 
+  type: string
+  pattern: '^[A-Z]{3,3}$'
+  example: EUR
