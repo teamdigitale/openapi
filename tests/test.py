@@ -71,7 +71,7 @@ def yaml_load_file(fpath, cb=None):
     txt = Path(fpath).read_text()
     if cb and callable(cb):
         txt = cb(txt)
-    return yaml.load(txt)
+    return yaml.safe_load(txt)
 
 
 def replace_branch_name(txt):

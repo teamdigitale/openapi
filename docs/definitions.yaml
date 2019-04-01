@@ -1,12 +1,12 @@
 info:
-  commit: ae5596d3e44de121db76a144b57fbf8ae955b661
-  date: 1547565085
+  commit: 841c1462d49892bcd924da29f794e8232c865be6
+  date: 1547567670
   description: |-
     OpenAPI 3 templates and definitions for implementing
     interoperable APIs.
 
     The work is ongoing, your feedback is greatly appreciated!
-  version: 0.0.3
+  version: master
 headers:
   Retry-After:
     description: |-

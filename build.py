@@ -18,7 +18,7 @@ SKIP_FILES = ("definitions.yaml",)
 
 def get_yaml(f):
     body = f.read_bytes()
-    return yaml.load(body)
+    return yaml.safe_load(body)
 
 
 def write_yaml(src, dst):
