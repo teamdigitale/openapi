@@ -7,11 +7,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.6-alpine
+      - image: python:3.6
     steps:
       - checkout
       - run:
           command: |
-            apk add git
             pip install tox
             tox
