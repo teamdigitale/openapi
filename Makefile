@@ -1,9 +1,10 @@
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
-
+GITHUB_REPO_FULL := $(shell git ls-remote --get-url $(GIT_REMOTE) 2>/dev/null |\
+                      sed -e 's/^.*github\.com.//;s/\.git$$//')
+CI_AUTHOR := CircleCI Job
 export GIT_COMMITTER_NAME=”CircleCI job”
 export GIT_COMMITTER_EMAIL=”noreply@github.com”
 
-CI_AUTHOR := CircleCI Job
 
 # Default to pushing if a key or token is available.
 ifneq (,$(GH_TOKEN)$(CI_HAS_WRITE_KEY))
@@ -15,7 +16,7 @@ PUSH_GHPAGES ?= false
 .IGNORE: fetch-ghpages
 .PHONY: fetch-ghpages
 fetch-ghpages:
-	@echo $(PUSH_GHPAGES) $(SOURCE_BRANCH)
+	@echo vars: $(PUSH_GHPAGES) $(SOURCE_BRANCH) $(GITHUB_REPO_FULL)
 	git fetch -q origin gh-pages:gh-pages
 
 GHPAGES_ROOT := /tmp/ghpages$(shell echo $$$$)
