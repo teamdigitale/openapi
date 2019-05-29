@@ -11,6 +11,26 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Build definitions.yaml
           command: |
             pip install tox
             tox
+
+      # Update gh-pages
+      - run:
+          name: "Update GitHub Pages"
+          command: |
+            if [ "${CIRCLE_BRANCH#test-}" != "${CIRCLE_BRANCH}" ]; then
+              make ghpages
+            fi
+
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: /.*?/
+
