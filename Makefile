@@ -36,6 +36,7 @@ endif
 ifneq ($(GHPAGES_TARGET),$(GHPAGES_ROOT))
 GHPAGES_ALL += $(GHPAGES_ROOT)/docs/$(GIT_BRANCH)/definitions.yaml
 $(GHPAGES_ROOT)/docs/$(GIT_BRANCH)/definitions.yaml: $(GHPAGES_ROOT)
+	find . -name *.yaml
 	tox -e build
 	mkdir -p $(GHPAGES_ROOT)/docs/$(GIT_BRANCH)
 	cp docs/definitions.yaml $@
