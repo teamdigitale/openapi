@@ -29,9 +29,13 @@ jobs:
 
       # Update gh-pages
       - run:
-          name: "Update GitHub Pages"
+          name: "Update GitHub Pages for non-test tags and master"
           command: |
-            if [ "${CIRCLE_BRANCH#test-}" != "${CIRCLE_BRANCH}" ]; then
+            if [ "${CIRCLE_TAG#test-}" != "${CIRCLE_TAG}" ]; then
+              make ghpages
+            fi
+
+            if [ "${CIRCLE_BRANC}" == "master" ]; then
               make ghpages
             fi
 
