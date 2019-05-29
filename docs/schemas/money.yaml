@@ -7,7 +7,7 @@ Money:
     - amount
   properties:
     currency:
-      $ref: '#/CurrencyCode'
+      $ref: 'money.yaml#/CurrencyCode'
     amount:
       description: >
         ISO20022: Amount of money to be moved between the debtor and

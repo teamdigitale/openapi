@@ -5,8 +5,9 @@ Validate and assemble spec files.
 """
 
 import logging
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
 import git
 import yaml
 from openapi_resolver import OpenapiResolver
@@ -63,7 +64,9 @@ def assemble():
         fh.write(f"#  {datetime.now().isoformat()}\n")
         fh.write(OpenapiResolver.yaml_dump_pretty(info))
         fh.write(
-            OpenapiResolver.yaml_dump_pretty(resolved).replace("#/components/", "#/")
+            OpenapiResolver.yaml_dump_pretty(resolved).replace(
+                "#/components/", "#/"
+            )
         )
 
 
