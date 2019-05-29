@@ -5,11 +5,13 @@ Validate and assemble spec files.
 """
 
 import logging
-from pathlib import Path
 from datetime import datetime
-import git
+from pathlib import Path
+
 import yaml
 from openapi_resolver import OpenapiResolver
+
+import git
 
 logging.basicConfig(level=logging.DEBUG)
 
