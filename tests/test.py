@@ -3,11 +3,10 @@ from pathlib import Path
 from shlex import split
 from subprocess import TimeoutExpired, run
 
+import git
 import yaml
 from openapi_resolver import OpenapiResolver
 from openapi_spec_validator import validate_spec
-
-import git
 
 logging.basicConfig(level=logging.DEBUG)
 
