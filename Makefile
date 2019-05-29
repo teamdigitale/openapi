@@ -1,5 +1,10 @@
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 
+export GIT_COMMITTER_NAME=”CircleCI job”
+export GIT_COMMITTER_EMAIL=”noreply@github.com”
+
+CI_AUTHOR := CircleCI Job
+
 # Default to pushing if a key or token is available.
 ifneq (,$(GH_TOKEN)$(CI_HAS_WRITE_KEY))
 PUSH_GHPAGES ?= true
@@ -54,7 +59,7 @@ ghpages: cleanup-ghpages $(GHPAGES_ALL)
 	pwd
 	git -C $(GHPAGES_ROOT) add -f $(GHPAGES_ALL)
 	if test `git -C $(GHPAGES_ROOT) status --porcelain | grep '^[A-Z]' | wc -l` -gt 0; then \
-	  git -C $(GHPAGES_ROOT) $(CI_AUTHOR) commit -m "Script updating gh-pages from $(shell git rev-parse --short HEAD). [ci skip]"; fi
+	  git -C $(GHPAGES_ROOT)  commit --author "$(CI_AUTHOR) <noreply@circleci.com>" -m "Script updating gh-pages from $(shell git rev-parse --short HEAD). [ci skip]"; fi
 
 ifeq (true,$(PUSH_GHPAGES))
 ifneq (,$(if $(CI_HAS_WRITE_KEY),1,$(if $(GH_TOKEN),,1)))

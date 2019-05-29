@@ -9,12 +9,23 @@ jobs:
     docker:
       - image: python:3.6
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a6:a3:22:d6:86:1f:3f:1f:e7:84:9c:a0:b4:87:f6:6c"
+
       - checkout
+
       - run:
           name: Build definitions.yaml
           command: |
             pip install tox
             tox
+
+      - run:
+         name: Add github key to hosts
+         command: |
+           mkdir -p ~/.ssh
+           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
       # Update gh-pages
       - run:
