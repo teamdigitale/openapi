@@ -5,6 +5,19 @@
 #
 version: 2
 jobs:
+  test:
+    docker:
+      - image: python:3.6
+    steps:
+
+      - checkout
+
+      - run:
+          name: Build definitions.yaml
+          command: |
+            pip install tox
+            tox
+
   build:
     docker:
       - image: python:3.6
@@ -19,7 +32,6 @@ jobs:
           name: Build definitions.yaml
           command: |
             pip install tox
-            tox
 
       - run:
          name: Add github key to hosts
@@ -31,11 +43,11 @@ jobs:
       - run:
           name: "Update GitHub Pages for non-test tags and master"
           command: |
-            if [ "${CIRCLE_TAG#test-}" != "${CIRCLE_TAG}" ]; then
+            if [ "${CIRCLE_TAG#test-}" == "${CIRCLE_TAG}" ]; then
               make ghpages
             fi
 
-            if [ "${CIRCLE_BRANC}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               make ghpages
             fi
 
@@ -44,8 +56,16 @@ workflows:
   version: 2
   build:
     jobs:
-      - build:
+      - test:
           filters:
             branches:
               only: /.*?/
+
+      - build:
+          filters:
+            tags:
+              only: /.*?/
+            branches:
+              only: master
+
 

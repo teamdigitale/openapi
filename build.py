@@ -52,16 +52,33 @@ def assemble():
     if "info" not in info:
         raise ValueError("Error: info.yaml does not contain 'info' section.")
 
+    if not repo.head.is_detached:
+        version = repo.active_branch.name
+    else:
+        version_tag = next(
+            (tag for tag in repo.tags if tag.commit == repo.head.commit), None
+        )
+        if not version_tag:
+            raise NotImplementedError(
+                "The current state should be an active_branch or a tag."
+            )
+        version = version_tag.name
+
     info["info"].update(
         {
             "commit": str(commit),
             "date": commit.committed_date,
-            "version": repo.active_branch.name,
+            "version": version,
         }
     )
+
+    committed_datetime = datetime.fromtimestamp(
+        commit.committed_date
+    ).isoformat()
+
     p = Path("docs/definitions.yaml")
     with p.open("w") as fh:
-        fh.write(f"#  {datetime.now().isoformat()}\n")
+        fh.write(f"#  {committed_datetime}\n")
         fh.write(OpenapiResolver.yaml_dump_pretty(info))
         fh.write(
             OpenapiResolver.yaml_dump_pretty(resolved).replace(

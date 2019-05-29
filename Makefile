@@ -1,4 +1,8 @@
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+ifeq ($(GIT_BRANCH),HEAD)
+GIT_BRANCH := $(shell git describe --tags)
+endif
+
 GITHUB_REPO_FULL := $(shell git ls-remote --get-url $(GIT_REMOTE) 2>/dev/null |\
                       sed -e 's/^.*github\.com.//;s/\.git$$//')
 CI_AUTHOR := CircleCI Job
@@ -16,7 +20,7 @@ PUSH_GHPAGES ?= false
 .IGNORE: fetch-ghpages
 .PHONY: fetch-ghpages
 fetch-ghpages:
-	@echo vars: $(PUSH_GHPAGES) $(SOURCE_BRANCH) $(GITHUB_REPO_FULL)
+	@echo vars: $(PUSH_GHPAGES) $(SOURCE_BRANCH) $(GITHUB_REPO_FULL) $(GIT_BRANCH)
 	git fetch -q origin gh-pages:gh-pages
 
 GHPAGES_ROOT := /tmp/ghpages$(shell echo $$$$)
@@ -40,12 +44,12 @@ endif
 
 
 ifneq ($(GHPAGES_TARGET),$(GHPAGES_ROOT))
-GHPAGES_ALL += $(GHPAGES_ROOT)/docs/$(GIT_BRANCH)/definitions.yaml
-$(GHPAGES_ROOT)/docs/$(GIT_BRANCH)/definitions.yaml: $(GHPAGES_ROOT)
+GHPAGES_ALL += $(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml
+$(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml: $(GHPAGES_ROOT)
 	find . -name '*.yaml'
 	git branch -a
 	tox -e build
-	mkdir -p $(GHPAGES_ROOT)/docs/$(GIT_BRANCH)
+	mkdir -p $(GHPAGES_ROOT)/$(GIT_BRANCH)
 	cp docs/definitions.yaml $@
 endif
 
