@@ -1,12 +1,13 @@
+#  2019-05-30T00:57:32.038506
 info:
-  commit: cdb3e576da1c4071679becc8572520da3dff1655
-  date: 1554135359
+  commit: 3d57cc6e288455b5a54b5c1c6d51f2afd98e7ca2
+  date: 1559152022
   description: |-
     OpenAPI 3 templates and definitions for implementing
     interoperable APIs.
 
     The work is ongoing, your feedback is greatly appreciated!
-  version: 0.0.4
+  version: master
 headers:
   Retry-After:
     description: |-
@@ -180,7 +181,7 @@ schemas:
         pattern: ^\-{0,1}[0-9]{1,13}(\.[0-9]{0,5}){0,1}$
         type: string
       currency:
-        $ref: '#/CurrencyCode'
+        $ref: '#/schemas/CurrencyCode'
     required:
     - currency
     - amount
