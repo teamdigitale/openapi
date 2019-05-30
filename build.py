@@ -4,9 +4,13 @@
 Validate and assemble spec files.
 """
 
+import json
 import logging
 from datetime import datetime
 from pathlib import Path
+from re import split
+from urllib.error import HTTPError
+from urllib.request import urlopen
 
 import git
 import yaml
@@ -87,5 +91,34 @@ def assemble():
         )
 
 
+def check_url(u):
+    try:
+        urlopen(u)
+        return True
+    except HTTPError as e:
+        if e.code != 404:
+            pass
+    return False
+
+
+def mkindex():
+    repo = git.Repo(".")
+    owner, repo_name = split("[:./]", next(repo.remote().urls))[2:4]
+
+    ret = []
+    for x in repo.tags:
+        u = f"https://{owner}.github.io/{repo_name}/{x.name}/definitions.yaml"
+        if check_url(u):
+            ret.append({"url": u, "comment": "OpenAPI 3.0"})
+    p = Path("index.html")
+    p.write_bytes(
+        json.dumps(
+            {"description": "Reusable OpenAPI definitions", "entries": ret},
+            indent=4,
+        ).encode()
+    )
+
+
 if __name__ == "__main__":
     assemble()
+    mkindex()

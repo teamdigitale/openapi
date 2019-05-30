@@ -45,13 +45,19 @@ endif
 
 ifneq ($(GHPAGES_TARGET),$(GHPAGES_ROOT))
 GHPAGES_ALL += $(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml
+GHPAGES_ALL += $(GHPAGES_ROOT)/index.html
 $(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml: $(GHPAGES_ROOT)
 	find . -name '*.yaml'
 	git branch -a
 	tox -e build
 	mkdir -p $(GHPAGES_ROOT)/$(GIT_BRANCH)
 	cp docs/definitions.yaml $@
+
+$(GHPAGES_ROOT)/index.html: $(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml
+	cp index.html $@
 endif
+
+
 
 
 cleanup-ghpages:
