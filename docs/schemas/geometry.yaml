@@ -1,0 +1,76 @@
+# Schemas for Latitude and Longitude based on ETRS89
+# for European territories and WGS for the others.
+# You can chose either the numeric or string format.
+
+Longitude:
+  description: |-
+    Longitude of a point expressed in:
+
+    * the ETRS89 system for Italian and European territories
+    * and in WGS84 for the others.
+  externalDocs:
+    url: http://dati.gov.it/onto/clvapit#long
+  type: number
+  format: double
+  minimum: -180
+  maximum: 180
+  example: 9.19289
+Latitude:
+  description: |-
+    Latitude of a point expressed in:
+
+    * the ETRS89 system for Italian and European territories
+    * and in WGS84 for the others.
+  externalDocs:
+    url: http://dati.gov.it/onto/clvapit#long
+  type: number
+  format: double
+  minimum: -90
+  maximum: 90
+  example: 45.492599
+
+
+LongitudeString:
+  description: |-
+    Latitude of a point expressed in:
+
+    * the ETRS89 system for Italian and European territories
+    * and in WGS84 for the others.
+
+    Value is serialized as a string. The associated numeric value must be
+    between -180 and 180.
+
+    The string value is safe from floating-point aritmetic errors.
+
+  type: string
+  example: "9.192894141231231"
+LatitudeString:
+  description: |-
+    Latitude of a point expressed in:
+
+    * the ETRS89 system for Italian and European territories
+    * and in WGS84 for the others.
+
+    Value is serialized as a string. The associated numeric value must be
+    between -90 and 90.
+
+    The string value is safe from floating-point aritmetic errors.
+  type: string
+  example: "45.492599412312331"
+
+Coordinates:
+  description: >-
+    Geographic coordinates of a point. The names "lat" and "long"
+    are inherited from the clvapit.
+
+    Example URL: http://dati.beniculturali.it/lodview/mibact/luoghi/resource/Geometry/Coordinate_geografiche_della_sede_di_Gallerie_degli_Uffizi_-_Corridoio_Vasariano_20440.html
+  properties:
+    lat:
+      $ref: 'geometry.yaml#/Latitude'
+    long:
+      $ref: 'geometry.yaml#/Longitude'
+  required:
+  - lat
+  - long
+
+
