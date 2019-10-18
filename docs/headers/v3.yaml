@@ -21,4 +21,14 @@ Retry-After:
     schema:
       type: integer
       format: int32
+Location:
+  description: |-
+    In some responses, this header references the
+    primary resource created.
 
+    It is used for redirections too.
+
+    See https://tools.ietf.org/html/rfc7231#section-7.1.2
+  schema:
+    type: string
+    format: url
