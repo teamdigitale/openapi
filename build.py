@@ -113,7 +113,11 @@ def mkindex():
     p = Path("index.html")
     p.write_bytes(
         json.dumps(
-            {"description": "Reusable OpenAPI definitions", "entries": ret},
+            {
+                "description": "Reusable OpenAPI definitions",
+                "date": datetime.now().isoformat(),
+                "entries": ret,
+            },
             indent=4,
         ).encode()
     )
