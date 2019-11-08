@@ -32,3 +32,17 @@ Location:
   schema:
     type: string
     format: url
+
+Sunset:
+  description: 
+     The Sunset HTTP response header field,
+     indicates that a URI is likely to become unresponsive at a
+     specified point in the future.  It also defines a sunset link
+     relation type that allows linking to resources providing information
+     about an upcoming resource or service sunset.
+  schema:
+    type: string
+    format: HTTP-date
+    example: Sun, 06 Nov 1994 08:49:37 GMT
+    externalDocs:
+      url: https://tools.ietf.org/html/rfc7231#appendix-D
