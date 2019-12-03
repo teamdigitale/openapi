@@ -13,7 +13,7 @@ Latest master is available at:
 
 Tagged specs are here:
 
-- https://teamdigitale.github.io/openapi/0.0.4/definitions.yaml
+- https://teamdigitale.github.io/openapi/0.0.6/definitions.yaml
 
 
 Specs are assebled from the following directories:
