@@ -6,5 +6,25 @@ Person:
       type: string
     family_name:
       type: string
+    date_of_birth:
+      type: string
+      formta: date
+    birth_place:
+      type: object
+      properties:
+        country:
+          type: string
+          description: |-
+            https://w3id.org/italia/onto/CLV/Country
+        province:
+          type: string
+          description: |-
+            https://w3id.org/italia/onto/CLV/Province
+        city:
+          type: string
+          description: |-
+            https://w3id.org/italia/onto/CLV/City
+          
+    
   externalDocs:
     url: https://w3id.org/italia/onto/CPV
