@@ -88,3 +88,16 @@ IfNoneMatch:
   example: '"7da7a728-f910-11e6-942a-68f728c1ba70", *'
   schema:
     type: string
+AcceptLanguage:
+  description: |-
+    Language selection is based on content-negotiation.
+    The adopted schema shows the subset of all the values
+    that are allowed.
+  in: header
+  name: Accept-Language
+  schema:
+    type: string
+    enum:
+    - it
+    - en
+    
