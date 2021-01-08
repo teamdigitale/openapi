@@ -31,7 +31,6 @@ def write_yaml(src, dst):
     p.write_text(OpenapiResolver.yaml_dump_pretty(src))
 
 
-
 def assemble():
     repo = git.Repo(".")
     commit = repo.head.commit

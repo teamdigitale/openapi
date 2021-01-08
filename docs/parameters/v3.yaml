@@ -6,12 +6,14 @@ cursor:
   example: 01BX9NSMKVXXS5PSP2FATZM123
   schema:
     type: string
+    maxLength: 1024
 fields:
   name: fields
   in: query
   description: Fields to retrieve
   schema:
     type: string
+    maxLength: 4096
 limit:
   name: limit
   in: query
@@ -19,6 +21,8 @@ limit:
   schema:
     type: integer
     format: int32
+    maximum: 100
+    minimum: 0
 offset:
   name: offset
   in: query
@@ -27,12 +31,15 @@ offset:
     type: integer
     default: 0
     format: int32
+    minimum: 0
+    maximum: 1e10
 q:
   name: q
   in: query
   description: Search query term
   schema:
     type: string
+    maxLength: 2048
 sort:
   name: sort
   in: query
@@ -40,6 +47,7 @@ sort:
   schema:
     type: string
     example: +name
+    maxLength: 1024
 citizen:
   name: citizen
   in: query
@@ -63,6 +71,7 @@ Etag:
   required: false
   schema:
     type: string
+    maxLength: 1024
 IfMatch:
   name: If-Match
   description: |
@@ -76,6 +85,7 @@ IfMatch:
   example: '"5", "7da7a728-f910-11e6-942a-68f728c1ba70"'
   schema:
     type: string
+    maxLength: 1024
 IfNoneMatch:
   name: If-None-Match
   description: |
@@ -88,3 +98,4 @@ IfNoneMatch:
   example: '"7da7a728-f910-11e6-942a-68f728c1ba70", *'
   schema:
     type: string
+    maxLength: 1024

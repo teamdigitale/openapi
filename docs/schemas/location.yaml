@@ -2,19 +2,23 @@ Location:
   properties:
     country:
       type: string
+      maxLength: 128
       description: |-
         https://w3id.org/italia/onto/CLV/Country
     province:
       type: string
+      maxLength: 128
       description: |-
         https://w3id.org/italia/onto/CLV/Province
     city:
       type: string
+      maxLength: 128
       description: |-
         https://w3id.org/italia/onto/CLV/City
     zip_code:
       type: string
+      maxLength: 6
     region:
       type: string
-
+      maxLength: 128
 

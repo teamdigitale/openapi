@@ -1,10 +1,20 @@
 Problem:
+  description: |-
+    This schema describes RFC7807 Problem Details for HTTP APIs.
+    The specification is intentionally flexible, and allows to adapt
+    the schema adding further properties, or not enforcing any of the properties
+    below.
+
+    To make this schema safe by default, additionalProperties are forbidden though.
+    In case you need them, you can either re-define Problem or extend it
+    using `allOf`.
   type: object
+  additionalProperties: false
   properties:
     type:
       type: string
       format: uri
-      maxLength: 8000
+      maxLength: 2048
       description: |
         An absolute URI that identifies the problem type.  When dereferenced,
         it SHOULD provide human-readable documentation for the problem type

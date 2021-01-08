@@ -4,16 +4,22 @@ X-RateLimit-Limit:
   schema:
     type: integer
     format: int32
+    minimum: 0
+    maximum: 1000000
 X-RateLimit-Remaining:
   description: The number of remaining requests in the current period
   schema:
     type: integer
     format: int32
+    minimum: 0
+    maximum: 1000000
 X-RateLimit-Reset:
   description: The number of seconds left in the current period
   schema:
     type: integer
     format: int32
+    minimum: 0
+    maximum: 186400
 Retry-After:
     description: |-
       Retry contacting the endpoint *at least* after seconds.
@@ -21,6 +27,8 @@ Retry-After:
     schema:
       type: integer
       format: int32
+      minimum: 0
+      maximum: 186400
 Location:
   description: |-
     In some responses, this header references the
@@ -32,6 +40,7 @@ Location:
   schema:
     type: string
     format: url
+    maxLength: 4096
 
 Sunset:
   description: 
@@ -44,5 +53,6 @@ Sunset:
     type: string
     format: HTTP-date
     example: Sun, 06 Nov 1994 08:49:37 GMT
+    maxLength: 30
     externalDocs:
       url: https://tools.ietf.org/html/rfc7231#appendix-D

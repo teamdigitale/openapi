@@ -23,6 +23,7 @@ CurrencyCode:
     currencies and funds".
   type: string
   pattern: '^[A-Z]{3,3}$'
+  maxLength: 3
   example: EUR
 Amount:
   description: >
@@ -32,3 +33,5 @@ Amount:
   type: string
   pattern: '^\-{0,1}[0-9]{1,13}(\.[0-9]{0,5}){0,1}$'
   example: '12.25'
+  maxLength: 35
+  minLength: 1
