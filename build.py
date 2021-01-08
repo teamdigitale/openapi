@@ -31,6 +31,7 @@ def write_yaml(src, dst):
     p.write_text(OpenapiResolver.yaml_dump_pretty(src))
 
 
+
 def assemble():
     repo = git.Repo(".")
     commit = repo.head.commit
@@ -103,7 +104,7 @@ def check_url(u):
 
 def mkindex():
     repo = git.Repo(".")
-    owner, repo_name = split("[:./]", next(repo.remote().urls))[2:4]
+    owner, repo_name = split("[:./]", next(repo.remote().urls))[-2:]
 
     ret = []
     for x in repo.tags:

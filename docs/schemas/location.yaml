@@ -1,0 +1,20 @@
+Location:
+  properties:
+    country:
+      type: string
+      description: |-
+        https://w3id.org/italia/onto/CLV/Country
+    province:
+      type: string
+      description: |-
+        https://w3id.org/italia/onto/CLV/Province
+    city:
+      type: string
+      description: |-
+        https://w3id.org/italia/onto/CLV/City
+    zip_code:
+      type: string
+    region:
+      type: string
+
+

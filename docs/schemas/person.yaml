@@ -6,5 +6,14 @@ Person:
       type: string
     family_name:
       type: string
+    date_of_birth:
+      type: string
+      formta: date
+    birth_place:
+      $ref: 'location.yaml#/Location'
+    residence:
+      $ref: 'location.yaml#/Location'
+
+
   externalDocs:
     url: https://w3id.org/italia/onto/CPV
