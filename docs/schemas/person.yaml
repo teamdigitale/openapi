@@ -10,21 +10,10 @@ Person:
       type: string
       formta: date
     birth_place:
-      type: object
-      properties:
-        country:
-          type: string
-          description: |-
-            https://w3id.org/italia/onto/CLV/Country
-        province:
-          type: string
-          description: |-
-            https://w3id.org/italia/onto/CLV/Province
-        city:
-          type: string
-          description: |-
-            https://w3id.org/italia/onto/CLV/City
-          
-    
+      $ref: 'location.yaml#/Location'
+    residence:
+      $ref: 'location.yaml#/Location'
+
+
   externalDocs:
     url: https://w3id.org/italia/onto/CPV

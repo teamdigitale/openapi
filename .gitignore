@@ -109,3 +109,5 @@ index.html
 
 # mypy
 .mypy_cache/
+
+docs/definitions.yaml
