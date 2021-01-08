@@ -23,11 +23,13 @@ Problem:
       example: 'https://tools.ietf.org/html/rfc7231#section-6.6.4'
     title:
       type: string
-      maxLength: 128
+      maxLength: 64
+      pattern: '^\w{64}$'
       description: |
         A short, summary of the problem type. Written in english and readable
         for engineers (usually not suited for non technical stakeholders and
-        not localized); example: Service Unavailable
+        not localized): the expressed pattern does not support unicode characters.
+      example: Service Unavailable
     status:
       type: integer
       format: int32
@@ -40,15 +42,18 @@ Problem:
       example: 503
     detail:
       type: string
-      maxLength: 1024
+      maxLength: 4096
+      pattern: '^\X{1024}$'
       description: |
         A human readable explanation specific to this occurrence of the
         problem. You MUST NOT expose internal informations, personal
         data or implementation details through this field.
+
+        `detail` supports unicode characters, expressed ad \X in the pattern.
       example: Request took too long to complete.
     instance:
       type: string
-      maxLength: 8000
+      maxLength: 2048
       format: uri
       description: |
         An absolute URI that identifies the specific occurrence of the problem.
