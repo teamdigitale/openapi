@@ -16,6 +16,7 @@ import git
 import yaml
 from openapi_resolver import OpenapiResolver
 
+log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 SKIP_FILES = ("definitions.yaml",)
@@ -93,7 +94,7 @@ def assemble():
 
 def check_url(u):
     try:
-        urlopen(u)
+        urlopen(u)  # nosec  this code runs locally
         return True
     except HTTPError as e:
         if e.code != 404:
@@ -104,7 +105,7 @@ def check_url(u):
 def mkindex():
     repo = git.Repo(".")
     owner, repo_name = split("[:./]", next(repo.remote().urls))[-2:]
-
+    log.info("Creating index for repo: %r with tags: %r", repo_name, repo.tags)
     ret = []
     for x in repo.tags:
         u = f"https://{owner}.github.io/{repo_name}/{x.name}/definitions.yaml"
