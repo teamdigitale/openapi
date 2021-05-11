@@ -21,4 +21,3 @@ Location:
     region:
       type: string
       maxLength: 128
-

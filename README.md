@@ -37,4 +37,3 @@ master and tags trigger `make ghpages` which:
 
 - generates definitions.yaml
 - push it to gh-pages branch, under $tag/definitions.yaml
-

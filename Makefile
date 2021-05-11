@@ -83,4 +83,3 @@ else
 	git -C $(GHPAGES_ROOT) push origin gh-pages
 endif # PUSH_GHPAGES
 	-rm -rf $(GHPAGES_ROOT)
-

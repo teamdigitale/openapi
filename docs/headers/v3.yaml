@@ -43,7 +43,7 @@ Location:
     maxLength: 4096
 
 Sunset:
-  description: 
+  description:
      The Sunset HTTP response header field,
      indicates that a URI is likely to become unresponsive at a
      specified point in the future.  It also defines a sunset link
