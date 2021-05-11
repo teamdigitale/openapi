@@ -56,3 +56,37 @@ Sunset:
     maxLength: 30
     externalDocs:
       url: https://tools.ietf.org/html/rfc7231#appendix-D
+X-Content-Type-Options:
+  description: |-
+      The X-Content-Type-Options response HTTP header indicates
+      that the MIME types advertised in the Content-Type headers should not be changed and be followed.
+      Site security testers usually expect this header to be set to `nosniff`.
+  schema:
+    type: string
+    enum:
+      - "nosniff"
+    example: nosniff
+    externalDocs:
+      url: "https://fetch.spec.whatwg.org/#x-content-type-options-header"
+Cache-Control:
+  description: |-
+    Cache usage SHOULD be extensively detailed in the `description` property
+    to avoid data leaks or the usage of stale data.
+    This rule should ensure in some way that the api provider
+    documented extensively the cache usage to avoid data leaks
+    or usage of stale data.
+    For now this ruleset tests:
+    * the presence of following keywords
+      in the `description`: `max-age`, `private`, `no-store`, `no-cache`.
+    * that one and only one between Expires and Cache-Control is used.
+    `Cache-Control` and `Expires` should not be used in conjuction,
+    because `Cache-Control` overrides `Expires` when `max-age` is set.
+    Instead if neither `Cache-Control` or `Expires` are set, clients MAY use euristic cache
+    like described in RFC7234.
+  schema:
+    type: string
+    pattern: >-
+      [a-zA-Z0-9=;" ]{,255}
+    example: no-store
+    externalDocs:
+      url: https://datatracker.ietf.org/doc/html/rfc7234
