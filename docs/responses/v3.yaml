@@ -1,7 +1,7 @@
 # Predefined error codes for this API
 #
 #
-# 
+#
 400BadRequest:
   description: Bad Request
   content:
@@ -44,4 +44,3 @@ default:
     application/problem+json:
       schema:
         $ref: '../schemas/problem.yaml#/Problem'
-
