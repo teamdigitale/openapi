@@ -8,7 +8,7 @@ import json
 import logging
 from datetime import datetime
 from pathlib import Path
-from re import split
+from re import split, sub
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
@@ -104,11 +104,15 @@ def check_url(u):
 
 def mkindex():
     repo = git.Repo(".")
-    owner, repo_name = split("[:./]", next(repo.remote().urls))[-2:]
+    repo_url = next(repo.remote().urls)
+    repo_url = sub(".git$", "", repo_url)
+
+    owner, repo_name = split("[:./]", repo_url)[-2:]
     log.info("Creating index for repo: %r with tags: %r", repo_name, repo.tags)
     ret = []
-    for x in repo.tags:
-        u = f"https://{owner}.github.io/{repo_name}/{x.name}/definitions.yaml"
+    repo_tags = ["master"] + sorted([x.name for x in repo.tags], reverse=True)
+    for t in repo_tags:
+        u = f"https://{owner}.github.io/{repo_name}/{t}/definitions.yaml"
         if check_url(u):
             ret.append({"url": u, "comment": "OpenAPI 3.0"})
     p = Path("index.html")
