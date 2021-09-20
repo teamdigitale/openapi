@@ -8,11 +8,19 @@ import yaml
 from openapi_resolver import OpenapiResolver
 from openapi_spec_validator import validate_spec
 
+from build import bundler
+
 logging.basicConfig(level=logging.DEBUG)
 
 # some global variables.
 repo = git.Repo(".")
 commit = repo.head.commit
+
+
+def test_bundler():
+    a, info, bundle = bundler()
+    assert all(x for x in (a, info, bundle))
+    assert yaml.safe_load(bundle)
 
 
 def test_ensure_yaml_files():
@@ -46,6 +54,8 @@ def test_check_build():
     run([str(Path("build.py").resolve())])
     definitions = yaml_load_file("docs/definitions.yaml")
     assert "info" in definitions
+    assert "components" in definitions
+    definitions = definitions["components"]
     for section in (
         "headers",
         "schemas",

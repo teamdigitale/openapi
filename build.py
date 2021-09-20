@@ -32,7 +32,7 @@ def write_yaml(src, dst):
     p.write_text(OpenapiResolver.yaml_dump_pretty(src))
 
 
-def assemble():
+def bundler():
     repo = git.Repo(".")
     commit = repo.head.commit
 
@@ -45,7 +45,7 @@ def assemble():
         if component not in definitions:
             definitions[component] = {}
         definitions[component].update(get_yaml(f))
-
+    definitions = {"components": definitions}
     write_yaml(definitions, "tests/tmp.bundle.yaml")
 
     r = OpenapiResolver(definitions, str(f))
@@ -71,25 +71,27 @@ def assemble():
 
     info["info"].update(
         {
-            "commit": str(commit),
-            "date": commit.committed_date,
+            "x-commit": str(commit),
+            "x-date": commit.committed_date,
             "version": version,
         }
     )
 
-    committed_datetime = datetime.fromtimestamp(
-        commit.committed_date
-    ).isoformat()
+    return (
+        datetime.fromtimestamp(commit.committed_date).isoformat(),
+        OpenapiResolver.yaml_dump_pretty(info),
+        OpenapiResolver.yaml_dump_pretty(resolved)
+        # .replace( "#/components/", "#/")
+    )
 
+
+def assemble():
+    committed_datetime, info, components = bundler()
     p = Path("docs/definitions.yaml")
     with p.open("w") as fh:
         fh.write(f"#  {committed_datetime}\n")
-        fh.write(OpenapiResolver.yaml_dump_pretty(info))
-        fh.write(
-            OpenapiResolver.yaml_dump_pretty(resolved).replace(
-                "#/components/", "#/"
-            )
-        )
+        fh.write(info)
+        fh.write(components)
 
 
 def check_url(u):
