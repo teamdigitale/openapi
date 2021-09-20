@@ -1,4 +1,6 @@
+openapi: 3.0.0
 info:
+  title: Interoperability components Italy
   description: |
     OpenAPI 3 templates and definitions for implementing
     interoperable APIs.
