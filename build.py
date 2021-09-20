@@ -71,8 +71,8 @@ def bundler():
 
     info["info"].update(
         {
-            "commit": str(commit),
-            "date": commit.committed_date,
+            "x-commit": str(commit),
+            "x-date": commit.committed_date,
             "version": version,
         }
     )
