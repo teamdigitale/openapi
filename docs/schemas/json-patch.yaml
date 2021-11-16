@@ -1,0 +1,81 @@
+RFC6902JsonPatch:
+  description: |-
+    A json-patch object described in RFC6902.
+  title: JSON Patch
+  type: array
+  minItems: 0
+  maxItems: 100
+  items:
+    description: one JSON Patch operation
+    allOf:
+    - description: Members common to all operations
+      properties:
+        path:
+          $ref: '#/RFC6902JsonPointer'
+      required:
+      - op
+      - path
+      type: object
+    - $ref: '#/RFC6902OneOperation'
+RFC6902Add:
+  description: add operation. Value can be any JSON value.
+  properties:
+    op:
+      enum:
+      - add
+  required:
+  - value
+RFC6902Copy:
+  description: copy operation. 'from' is a JSON Pointer.
+  properties:
+    from:
+      $ref: '#/RFC6902JsonPointer'
+    op:
+      enum:
+      - copy
+  required:
+  - from
+RFC6902JsonPointer:
+  pattern: ^(/[^/~]*(~[01][^/~]*)*)*$
+  type: string
+RFC6902Move:
+  description: move operation. 'from' is a JSON Pointer.
+  properties:
+    from:
+      $ref: '#/RFC6902JsonPointer'
+    op:
+      enum:
+      - move
+  required:
+  - from
+RFC6902OneOperation:
+  oneOf:
+  - $ref: '#/RFC6902Add'
+  - $ref: '#/RFC6902Remove'
+  - $ref: '#/RFC6902Replace'
+  - $ref: '#/RFC6902Move'
+  - $ref: '#/RFC6902Copy'
+  - $ref: '#/RFC6902Test'
+RFC6902Remove:
+  description: remove operation. Only a path is specified.
+  properties:
+    op:
+      enum:
+      - remove
+RFC6902Replace:
+  description: replace operation. Value can be any JSON value.
+  properties:
+    op:
+      enum:
+      - replace
+  required:
+  - value
+RFC6902Test:
+  description: test operation. Value can be any JSON value.
+  additionalProperties: false
+  properties:
+    op:
+      enum:
+      - test
+  required:
+  - value
