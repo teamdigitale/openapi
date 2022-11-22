@@ -6,6 +6,7 @@ Person:
     given_name: givenName
     family_name: familyName
     date_of_birth: dateOfBirth
+    education: hasLevelOfEducation
     birth_place:
       "@id": birthPlace
       "@context": &LocationContext
@@ -48,6 +49,7 @@ Person:
     residence:
       $ref: 'location.yaml#/Address'
     education:
-      $ref: "/other/vocabularies-schema/education-level.oas3.yaml#/SchemaVocabulary"
+      type: string
+      maxLength: 3
   externalDocs:
     url: https://w3id.org/italia/onto/CPV
