@@ -1,4 +1,29 @@
-Location:
+Address: &Address
+  x-jsonld-type: https://w3id.org/italia/onto/Address
+  x-jsonld-context:
+    "@vocab": https://w3id.org/italia/onto/CLV/
+    zip_code: postCode
+    province:
+      "@id": "hasProvince"
+      "@type": "@id"
+      "@context":
+        "@base": "https://w3id.org/italia/data/identifiers/provinces-identifiers/vehicle-code/"
+    city: hasCity
+    country:
+      "@id": hasCountry
+      "@type": "@id"
+      "@context":
+        "@base": http://publications.europa.eu/resource/authority/country/
+    region:
+      "@id": hasRegion
+      "@type": "@id"
+      "@context":
+        "@base": https://w3id.org/italia/controlled-vocabulary/territorial-classifications/regions/
+  type: object
+  required:
+  - city
+  - province
+  - country
   properties:
     country:
       type: string
@@ -7,7 +32,7 @@ Location:
         https://w3id.org/italia/onto/CLV/Country
     province:
       type: string
-      maxLength: 128
+      maxLength: 3
       description: |-
         https://w3id.org/italia/onto/CLV/Province
     city:
@@ -21,3 +46,8 @@ Location:
     region:
       type: string
       maxLength: 128
+Location:
+  <<: *Address
+  x-jsonld-type: https://w3id.org/italia/onto/CLV/Feature
+  required:
+  - country
