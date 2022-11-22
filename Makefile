@@ -52,6 +52,7 @@ $(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml: $(GHPAGES_ROOT)
 	tox -e build
 	mkdir -p $(GHPAGES_ROOT)/$(GIT_BRANCH)
 	cp docs/definitions.yaml $@
+	cp -rp other $(GHPAGES_ROOT)/$(GIT_BRANCH)
 
 $(GHPAGES_ROOT)/index.html: $(GHPAGES_ROOT)/$(GIT_BRANCH)/definitions.yaml
 	cp index.html $@
