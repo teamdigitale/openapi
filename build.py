@@ -133,8 +133,6 @@ def mkindex(repo):
 
 if __name__ == "__main__":
     repo = git.Repo(".")
-    repo.git(work_tree="/tmp/foo").checkout("gh-pages")
-    shutil.copytree("/tmp/foo", "_build")
     assemble(repo)
     mkindex(repo)
     for fpath in ("other",):

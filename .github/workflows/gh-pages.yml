@@ -1,0 +1,34 @@
+name: gh-pages
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          architecture: 'x64'
+
+      # Runs a single command using the runners shell
+      - name: Run a script
+        run: |-
+          pip install tox
+          git worktree add _build gh-pages
+          tox -re build
+          rm _build/.git -fr
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: _build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
