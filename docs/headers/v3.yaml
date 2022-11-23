@@ -86,7 +86,7 @@ Cache-Control:
   schema:
     type: string
     pattern: >-
-      [a-zA-Z0-9=;" -]{,255}
+      [a-zA-Z0-9=;" -]{0,255}
     example: no-store
     externalDocs:
       url: https://datatracker.ietf.org/doc/html/rfc7234
