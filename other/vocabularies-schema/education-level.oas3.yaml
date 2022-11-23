@@ -1,0 +1,109 @@
+SchemaVocabulary:
+  x-count: 16
+  x-version: 2018-06-05
+  oneOf:
+    - enum:
+        - ACO
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/ACO
+      title: Diploma di Accademia di Belle Arti, Danza, Arte Drammatica, ISIA, ecc.
+        Conservatorio (vecchio ordinamento)
+      type: string
+    - enum:
+        - CDU
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/CDU
+      title: Diploma universitario di due/tre anni, Scuola diretta a fini speciali,
+        altro diploma terziario non universitario
+      type: string
+    - enum:
+        - FLA
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/FLA
+      title: Diploma accademico di Alta Formazione Artistica, Musicale e Coreutica di
+        I livello
+      type: string
+    - enum:
+        - IFP
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/IFP
+      title: Attestato IFP di qualifica professionale triennale (operatore)/Diploma
+        professionale IFP di tecnico (quarto anno) (dal 2005)
+      type: string
+    - enum:
+        - IFTS
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/IFTS
+      title: Certificato di specializzazione tecnica superiore IFTS (dal 2000)
+      type: string
+    - enum:
+        - ITS
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/ITS
+      title: Diploma di tecnico superiore ITS (corsi biennali) (dal 2013)
+      type: string
+    - enum:
+        - L
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/L
+      title: "Laurea di primo livello "
+      type: string
+    - enum:
+        - LD
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/LD
+      title: Laurea specialistica/magistrale a ciclo unico o diploma di laurea di 4-6
+        anni
+      type: string
+    - enum:
+        - LS
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/LS
+      title: Laurea specialistica/magistrale biennale
+      type: string
+    - enum:
+        - LSE
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/LSE
+      title: Licenza media o avviamento professionale (conseguito non oltre l'anno
+        1965) /Diploma di Istruzione secondaria di I grado
+      type: string
+    - enum:
+        - NED
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/NED
+      title: Nessun titolo di studio
+      type: string
+    - enum:
+        - PSE
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/PSE
+      title: Licenza elementare/ Attestato di valutazione finale
+      type: string
+    - enum:
+        - RDD
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/RDD
+      title: "Dottorato di ricerca/Diploma accademico di formazione alla ricerca "
+      type: string
+    - enum:
+        - SLA
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/SLA
+      title: Diploma accademico di Alta Formazione Artistica, Musicale e Coreutica di
+        II livello
+      type: string
+    - enum:
+        - USG
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/USG
+      title: Diploma di maturità / diploma di istruzione secondaria di II grado di 4-5
+        anni (che permette l’iscrizione all’università)
+      type: string
+    - enum:
+        - USV
+      externalDocs:
+        url: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/USV
+      title: Diploma di qualifica professionale di scuola secondaria di II grado di
+        2-3 anni (che non permette l’iscrizione all’Università)
+      type: string

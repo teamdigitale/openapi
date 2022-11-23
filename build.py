@@ -6,6 +6,7 @@ Validate and assemble spec files.
 
 import json
 import logging
+import shutil
 from datetime import datetime
 from pathlib import Path
 from re import split, sub
@@ -32,8 +33,7 @@ def write_yaml(src, dst):
     p.write_text(OpenapiResolver.yaml_dump_pretty(src))
 
 
-def bundler():
-    repo = git.Repo(".")
+def bundler(repo):
     commit = repo.head.commit
 
     definitions = {}
@@ -85,9 +85,11 @@ def bundler():
     )
 
 
-def assemble():
-    committed_datetime, info, components = bundler()
-    p = Path("docs/definitions.yaml")
+def assemble(repo):
+    committed_datetime, info, components = bundler(repo)
+    d = Path(f"_build/{repo.active_branch.name}")
+    d.mkdir(exist_ok=True)
+    p = d / "definitions.yaml"
     with p.open("w") as fh:
         fh.write(f"#  {committed_datetime}\n")
         fh.write(info)
@@ -104,8 +106,7 @@ def check_url(u):
     return False
 
 
-def mkindex():
-    repo = git.Repo(".")
+def mkindex(repo):
     repo_url = next(repo.remote().urls)
     repo_url = sub(".git$", "", repo_url)
 
@@ -131,5 +132,8 @@ def mkindex():
 
 
 if __name__ == "__main__":
-    assemble()
-    mkindex()
+    repo = git.Repo(".")
+    assemble(repo)
+    mkindex(repo)
+    for fpath in ("other",):
+        shutil.copytree(fpath, Path("_build") / repo.active_branch.name / fpath)

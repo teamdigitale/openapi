@@ -1,4 +1,37 @@
 Person:
+  type: object
+  x-jsonld-type: https://w3id.org/italia/onto/CPV/Person
+  x-jsonld-context:
+    "@vocab": https://w3id.org/italia/onto/CPV/
+    given_name: givenName
+    family_name: familyName
+    date_of_birth: dateOfBirth
+    education: hasLevelOfEducation
+    birth_place:
+      "@id": birthPlace
+      "@context": &LocationContext
+        "@vocab": https://w3id.org/italia/onto/CLV/
+        province:
+          "@id": "hasProvince"
+          "@type": "@id"
+          "@context":
+            "@base": "https://w3id.org/italia/data/identifiers/provinces-identifiers/vehicle-code/"
+        city: hasCity
+        country:
+          "@id": hasCountry
+          "@type": "@id"
+          "@context":
+            "@base": http://publications.europa.eu/resource/authority/country/
+    residence:
+      "@id": residentIn
+      "@context":
+        <<: *LocationContext
+        zip_code: postCode
+        region:
+          "@id": hasRegion
+          "@type": "@id"
+          "@context":
+            "@base": https://w3id.org/italia/controlled-vocabulary/territorial-classifications/regions/
   properties:
     tax_code:
       $ref: 'tax_code.yaml#/TaxCode'
@@ -14,6 +47,9 @@ Person:
     birth_place:
       $ref: 'location.yaml#/Location'
     residence:
-      $ref: 'location.yaml#/Location'
+      $ref: 'location.yaml#/Address'
+    education:
+      type: string
+      maxLength: 3
   externalDocs:
     url: https://w3id.org/italia/onto/CPV
