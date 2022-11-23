@@ -7,8 +7,9 @@ Person:
     family_name: familyName
     date_of_birth: dateOfBirth
     education: hasLevelOfEducation
+    tax_code: taxCode
     birth_place:
-      "@id": birthPlace
+      "@id": hasBirthPlace
       "@context": &LocationContext
         "@vocab": https://w3id.org/italia/onto/CLV/
         province:
@@ -38,9 +39,11 @@ Person:
     given_name:
       type: string
       maxLength: 255
+      pattern: ^[A-Za-zÀ-ÖØ-öø-ÿ]+$
     family_name:
       type: string
       maxLength: 255
+      pattern: ^[A-Za-zÀ-ÖØ-öø-ÿ]+$
     date_of_birth:
       type: string
       format: date
@@ -51,5 +54,6 @@ Person:
     education:
       type: string
       maxLength: 3
+      pattern: ^[A-Z0-9]{3}$
   externalDocs:
     url: https://w3id.org/italia/onto/CPV

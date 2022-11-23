@@ -1,0 +1,42 @@
+@prefix admsapt: <https://w3id.org/italia/onto/ADMS/> .
+@prefix cpv: <https://w3id.org/italia/onto/CPV/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix licences: <https://w3id.org/italia/controlled-vocabulary/licences/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://w3id.org/italia/schemas/Person/v202108.01/OAS3> a dcatapit:Dataset ;
+    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+    dct:conformsTo <https://w3id.org/italia/onto/CPV> ;
+    dct:description """This Person schema is derived from the [CPV/Person](https://w3id.org/italia/onto/CPV/Person) ontology.
+
+This description field can be rendered in markdown or in text-only in catalogues
+and other interfaces.""" ;
+    dct:modified "2021-12-06" ;
+    dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+    dct:title "The Person schema" ;
+    owl:versionInfo "202108.01.00" ;
+    dcat:distribution <https://w3id.org/italia/schemas/person/v202108.01/OAS3.yaml> ;
+    admsapt:hasKeyClass cpv:Person ,
+                        cpv:PersonTitle ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
+
+cpv:Person a owl:Ontology ;
+   rdfs:label "Person" .
+cpv:PersonTitle a owl:Ontology ;
+   rdfs:label "Person Title" .
+
+<https://w3id.org/italia/schemas/person/v2021.08.01/OAS3.yaml> a dcatapit:Distribution ;
+    dct:format <http://publications.europa.eu/resource/authority/file-type/YAML> ;
+    dct:license licences:A21_CCBY40 ;
+    dcat:accessURL <https://github.com/teamdigitale/openapi/tree/gh-pages/master> ;
+    dcat:downloadURL <https://teamdigitale.github.io/openapi/master/definitions.yaml#/components/schemas/Person> ;
+    dcat:mediaType "application/yaml" .
+
+<http://spcdata.digitpa.gov.it/Amministrazione/agid> a dcatapit:Agent,
+        foaf:Agent ;
+    dct:identifier "agid" ;
+    foaf:name "Agenzia per l'Italia Digitale" .
