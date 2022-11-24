@@ -16,8 +16,8 @@ This description field can be rendered in markdown or in text-only in catalogues
 and other interfaces.""" ;
     dct:modified "2021-12-06" ;
     dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
-    dct:title "The Person schema" ;
-    owl:versionInfo "202108.01.00" ;
+    dct:title "The Test Person schema" ;
+    owl:versionInfo "202108.01.01" ;
     dcat:distribution <https://w3id.org/italia/schema/person/v202108.01/OAS3.yaml> ;
     admsapt:hasKeyClass cpv:Person ,
                         cpv:PersonTitle ;
