@@ -23,11 +23,6 @@ and other interfaces.""" ;
                         cpv:PersonTitle ;
     dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
 
-cpv:Person a owl:Ontology ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "Person" .
-cpv:PersonTitle a owl:Ontology ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "Person Title" .
-
 <https://w3id.org/italia/schema/person/v202108.01/OAS3.yaml> a dcatapit:Distribution ;
     dct:format <http://publications.europa.eu/resource/authority/file-type/JSON> ;
     dct:license licences:A21_CCBY40 ;
@@ -35,7 +30,3 @@ cpv:PersonTitle a owl:Ontology ;
     dcat:downloadURL <https://teamdigitale.github.io/openapi/master/definitions.yaml> ;
     dcat:mediaType "application/json" .
 
-<http://spcdata.digitpa.gov.it/Amministrazione/agid> a dcatapit:Agent,
-        foaf:Agent ;
-    dct:identifier "agid" ;
-    foaf:name "Agenzia per l'Italia Digitale" .
