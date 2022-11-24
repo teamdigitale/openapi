@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/italia/schemas/person/v2021.08.01> .
+@prefix : <https://w3id.org/italia/schemas/person/v2021.08.01/> .
 @prefix admsapt: <https://w3id.org/italia/onto/ADMS/> .
 @prefix cpv: <https://w3id.org/italia/onto/CPV/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -41,7 +41,7 @@ and other interfaces.""" ;
 
 :OAS3.yaml a dcatapit:Distribution ;
     dcat:accessURL <https://github.com/teamdigitale/openapi/tree/gh-pages/master> ;
-    dcat:downloadURL <https://teamdigitale.github.io/openapi/master/definitions.yaml#/components/schemas/Person> ;
+    dcat:downloadURL <https://teamdigitale.github.io/openapi/master/definitions.yaml> ;
     dcat:mediaType "application/yaml" ;
     dct:format <http://publications.europa.eu/resource/authority/file-type/YAML> ;
     dct:license licences:A21_CCBY40 .
