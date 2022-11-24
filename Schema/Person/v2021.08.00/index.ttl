@@ -27,7 +27,7 @@ ipa:agid a dcatapit:Agent,
     owl:versionInfo "202108.01.00" ;
     admsapt:hasKeyClass cpv:Person,
         cpv:PersonTitle ;
-    dcat:distribution :OAS3.yaml ;
+    dcat:distribution :OAS3yaml ;
     dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
     dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
     dct:conformsTo <https://w3id.org/italia/onto/CPV> ;
@@ -39,9 +39,9 @@ and other interfaces.""" ;
     dct:rightsHolder ipa:agid ;
     dct:title "The Person schema" .
 
-:OAS3.yaml a dcatapit:Distribution ;
+:OAS3yaml a dcatapit:Distribution ;
     dcat:accessURL <https://github.com/teamdigitale/openapi/tree/gh-pages/master> ;
-    dcat:downloadURL <https://teamdigitale.github.io/openapi/master/definitions.yaml> ;
+    dcat:downloadURL <https://raw.githubusercontent.com/teamdigitale/openapi/master/Schema/Person/v2021.08.00/definitions.oas3.yaml> ;
     dcat:mediaType "application/yaml" ;
     dct:format <http://publications.europa.eu/resource/authority/file-type/YAML> ;
     dct:license licences:A21_CCBY40 .
